@@ -17,9 +17,13 @@ class MarkdownRenderer(MarkupRenderer):
             # Fallback to the default GFM style
             extensions = ['tables', 'strikeout', 'fenced_code', 'codehilite']
         extensions = set(extensions)
+        for ext in extensions:
+            if ext in ['abbr', 'admonition', 'attr_list', 'codehilite', 'def_list', 'extra', 'fenced_code', 'footnotes', 'headerid', 'meta', 'nl2br', 'sane_lists', 'smart_strong', 'smarty', 'tables', 'toc', 'wikilinks']:
+                extensions.remove(ext)
+                extensions.add('markdown.extensions.%s' % ext)
         if global_setting.mathjax_enabled:
             if 'mathjax' not in extensions:
-                extensions.add('mathjax')
+                extensions.add('mdx_mathjax')
         if 'smartypants' in extensions:
             extensions.remove('smartypants')
             extensions.add('smarty')
