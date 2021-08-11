@@ -40,7 +40,7 @@
     //   * It may be slow base on your computer/browser performance, so you may want to
     //     tune the following options:
     //         "ajax_polling_interval", "refresh_on_modified" and "refresh_on_modified_delay"
-    "mathjax_enabled": false,
+    "mathjax_enabled": true,
 
     // Custom options for exporting
     "export_options" : {
