@@ -21,6 +21,10 @@ class MarkdownRenderer(MarkupRenderer):
             if ext in ['abbr', 'admonition', 'attr_list', 'codehilite', 'def_list', 'extra', 'fenced_code', 'footnotes', 'headerid', 'meta', 'nl2br', 'sane_lists', 'smart_strong', 'smarty', 'tables', 'toc', 'wikilinks']:
                 extensions.remove(ext)
                 extensions.add('markdown.extensions.%s' % ext)
+        for ext in ['mathjax', 'strikeout', 'subscript', 'superscript']:
+            if ext in extensions:
+                extensions.remove(ext)
+                extensions.add('mdx_%s' % ext)
         if global_setting.mathjax_enabled:
             if 'mathjax' not in extensions:
                 extensions.add('mdx_mathjax')
